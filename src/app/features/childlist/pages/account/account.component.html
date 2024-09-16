@@ -1,0 +1,20 @@
+<section class="row mx-auto mt-3">
+    <h2 class="mb-sm-5 col-sm-12">Bienvenue UTILISATEUR</h2>
+
+    <div class="d-flex flex-column flex-md-row gap-2 justify-content-center mb-3">
+        <a class="btn btn-primary flex-fill" [routerLink]="'/childlist/ownchildlist'">
+            <fa-icon [icon]="faList"></fa-icon>
+            Gestions des listes
+        </a>
+
+        <button class="btn btn-primary flex-fill" type="button">
+            <fa-icon [icon]="faCirclePlus"></fa-icon>
+            Ajout d'un article
+        </button>
+
+        <button class="btn btn-primary flex-fill" type="button" (click)="logout()">
+            <fa-icon [icon]="faRightFromBracket"></fa-icon>
+            Deconnexion
+        </button>
+    </div>
+</section>

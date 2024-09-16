@@ -2,14 +2,7 @@ import {Component} from '@angular/core';
 import {Link} from '../../core/models/link';
 import {AuthService} from "../../features/auth/services/auth.service";
 import {UserTokenDtoModel} from "../../features/auth/models/user.token.dto.model";
-import {
-    faHome,
-    faList,
-    faMinus,
-    faPenToSquare,
-    faPlus,
-    faRightFromBracket, faUser, faUserPlus
-} from "@fortawesome/free-solid-svg-icons";
+import {faCartShopping, faHome, faList, faRightFromBracket, faUser, faUserPlus} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
     selector: 'app-header',
@@ -17,54 +10,58 @@ import {
     styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-    links: Link[] = []
+    links: Link = {
+        left: [],
+        right: []
+    }
 
-    private commonNav: Link[] = []
+    private anonymousNav: Link = {
+        left: [
+            {
+                title: 'Accueil',
+                url: '/',
+                icon: faHome
+            },
+        ],
+        right: [
+            {
+                title: 'Inscription',
+                url: '/auth/register',
+                icon: faUserPlus
+            },
+            {
+                title: 'Connexion',
+                url: '/auth/login',
+                icon: faUser
+            },
+        ]
+    }
 
-    private anonymousNav: Link[] = [
-        ...this.commonNav,
-        {
-            title: 'Accueil',
-            url: '/',
-            icon: faHome
-        },
-        {
-            title: 'Inscription',
-            url: '/auth/register',
-            icon: faUserPlus
-        },
-        {
-            title: 'Connexion',
-            url: '/auth/login',
-            icon: faUser
-        },
-    ];
-
-    private authenticatedNav: Link[] = [
-        ...this.commonNav,
-        {
-            title: 'Listes de naissances',
-            url: '/childlist/',
-            icon: faList
-        },
-        {
-            title: 'Ajouter',
-            icon: faPlus
-        },
-        {
-            title: 'Editer liste',
-            icon: faPenToSquare
-        },
-        {
-            title: 'Supprimer',
-            icon: faMinus
-        },
-        {
-            title: 'Logout',
-            icon: faRightFromBracket,
-            action: () => this._authService.logout()
-        },
-    ];
+    private authenticatedNav: Link = {
+        left: [
+            {
+                title: 'Listes de naissances',
+                url: '/childlist/',
+                icon: faList
+            },
+        ],
+        right: [
+            {
+                title: 'Panier',
+                icon: faCartShopping,
+            },
+            {
+                title: 'Compte',
+                url: '/childlist/account',
+                icon: faUser,
+            },
+            {
+                title: 'Logout',
+                icon: faRightFromBracket,
+                action: () => this._authService.logout()
+            },
+        ]
+    }
 
     currentUser: UserTokenDtoModel | undefined;
 
@@ -78,6 +75,4 @@ export class HeaderComponent {
             }
         })
     }
-
-    protected readonly faPlus = faPlus;
 }

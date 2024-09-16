@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    cursor: url("/assets/curseur.png"), default !important;
+}
+
+body {
+    background-image: url("/assets/background.jpg");
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+
+section {
+    background-color: #eee;
+    border: 3px solid #337ab7;
+    border-radius: 10px;
+    box-shadow: 2px 2px 1px black;
+    padding: 2% 3%;
+    margin: 0 30%;
+
+    @media screen and (max-width:770px) {
+        margin: 5%;
+    }
+
+    & > h2 {
+        text-align: center;
+    }
+
+    & > article {
+        border: 3px solid black;
+        margin-bottom: 15px;
+        margin-top: 15px;
+        background-color: #C6E2FF;
+
+        &:hover {
+            box-shadow: 5px 5px 2px #888;
+            background-color: #ddd;
+        }
+
+        & > div {
+            border: 3px solid black;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: white;
+        }
+    }
+}

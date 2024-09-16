@@ -1,0 +1,37 @@
+<section class="row mx-auto mt-3">
+    <h2 class="col-md-12 mb-4">Listing des listes de naissance(s)</h2>
+
+    <article>
+        <h3>Listes crées</h3>
+        <div class="m-3 p-2 border border-3 border-black">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>date</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    @for (cl of childlists; track cl.childlist_id) {
+                        @if (cl.createdBy === this.iduser) {
+                            <tr>
+                                <td>{{cl.lastname}}</td>
+                                <td>{{cl.firstname}}</td>
+                                <td>{{cl.birthdate}}</td>
+                                <td>
+                                    <a href="#" class="btn btn-outline-secondary"><fa-icon [icon]="faEye"></fa-icon></a>
+                                    <a href="#" class="btn btn-outline-secondary"><fa-icon [icon]="faXmark"></fa-icon></a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </article>
+
+
+
+</section>

@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
-import {ChildlistShortDtoModel} from "../../models/childlist.short.dto.model";
+import {ChildlistDtoModel} from "../../models/childlist.dto.model";
 import {ActivatedRoute} from "@angular/router";
+import {environment} from "../../../../../environments/environment";
+import {faAlignLeft} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
     selector: 'app-index',
@@ -8,7 +10,7 @@ import {ActivatedRoute} from "@angular/router";
     styleUrl: './index.component.scss'
 })
 export class IndexComponent {
-    childlists!: ChildlistShortDtoModel[]
+    childlists!: ChildlistDtoModel[]
 
     constructor(
         private readonly _ar: ActivatedRoute
@@ -17,4 +19,8 @@ export class IndexComponent {
             this.childlists = data.childlists
         })
     }
+
+
+    protected readonly environment = environment;
+    protected readonly faAlignLeft = faAlignLeft;
 }

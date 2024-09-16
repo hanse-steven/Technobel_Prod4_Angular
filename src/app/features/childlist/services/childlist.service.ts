@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {ChildlistShortDtoModel} from "../models/childlist.short.dto.model";
 import {environment} from "../../../../environments/environment";
-import {ChildlistLongDtoModel} from "../models/childlist.long.dto.model";
+import {ChildlistDtoModel} from "../models/childlist.dto.model";
 import {ChildlistFormModel} from "../models/childlist.form.model";
 
 @Injectable({
@@ -16,12 +15,12 @@ export class ChildlistService {
     ) {
     }
 
-    findAll(): Observable<ChildlistShortDtoModel[]> {
-        return this._http.get<ChildlistShortDtoModel[]>(environment.childList)
+    findAll(): Observable<ChildlistDtoModel[]> {
+        return this._http.get<ChildlistDtoModel[]>(environment.childList)
     }
 
-    findById(id: string): Observable<ChildlistLongDtoModel[]> {
-        return this._http.get<ChildlistLongDtoModel[]>(environment.childList + '?childlist_id=' + id)
+    findById(id: string): Observable<ChildlistDtoModel[]> {
+        return this._http.get<ChildlistDtoModel[]>(environment.childList + '?childlist_id=' + id)
     }
 
     save(childlist: ChildlistFormModel): Observable<ChildlistFormModel> {

@@ -30,15 +30,11 @@ export class LoginComponent {
 
         this._authService.login(this.loginForm.value).subscribe({
             next: datas => {
-                this._router.navigate(['/'])
+                this._router.navigate(['/childlist'])
             },
             error: err => {
                 console.log(err)
             }
         })
     }
-
-
-
-
 }

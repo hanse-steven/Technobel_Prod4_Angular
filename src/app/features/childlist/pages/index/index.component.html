@@ -1,8 +1,26 @@
-<h2>Listing des listes de naissance(s)</h2>
+<section class="row mx-auto mt-3">
+    <h2 class="col-md-12 mb-4">Listing des listes de naissance(s)</h2>
 
+    @for (cl of childlists; track cl.childlist_id) {
+        @if (cl.items.length > 0) {
+            <article>
+                <h3>{{ cl.firstname }} {{ cl.lastname }} {{ cl.birthdate }}</h3>
 
-@for (cl of childlists; track cl.childlist_id) {
-    <article>
-        <h3>{{cl.firstname}} {{cl.lastname}} {{cl.birthdate}}</h3>
-    </article>
-}
+                @for (it of cl.items; track it.childlistitem_id) {
+                    @if (it.boughtBy === null) {
+                        <div class="col-md-12">
+                            <h4>{{ it.name }}</h4>
+                            <p>{{ it.price | currency }}</p>
+                            <div class="d-grid">
+                                <a class="btn btn-primary" [routerLink]="'/childlist/item/' + it.childlistitem_id">
+                                    <fa-icon [icon]="faAlignLeft"></fa-icon>
+                                    Description
+                                </a>
+                            </div>
+                        </div>
+                    }
+                }
+            </article>
+        }
+    }
+</section>

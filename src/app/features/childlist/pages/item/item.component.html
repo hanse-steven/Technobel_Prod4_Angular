@@ -1,0 +1,35 @@
+<section class="row mx-auto mt-3">
+    <h2 class="mb-sm-5 col-sm-12">Information sur le produit sélectionné</h2>
+
+    <div class="mb-3 row">
+        <label for="titre" class="col-md-1 col-form-label">Titre</label>
+        <div class="col-md-11">
+            <input type="text" class="form-control" id="titre" readonly="readonly" [value]="childlistitem.name">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="prix" class="col-md-1 col-form-label">Prix</label>
+        <div class="col-md-11">
+            <input type="number" class="form-control" id="prix" readonly="readonly" [value]="childlistitem.price">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="Photo" class="col-md-1 col-form-label">Image</label>
+        <div class="col-md-11">
+            <img id="Photo" [src]="'data:image/png;base64,' + childlistitem.image" class="form-control input-md" style="max-height: 250px; width: auto; aspect-ratio: 1">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="description" class="col-md-1 form-label">Description</label>
+        <div class="col-md-11">
+            <textarea class="form-control" id="description" rows="3" readonly="readonly">{{childlistitem.description}}</textarea>
+        </div>
+    </div>
+
+    <div class="d-grid mt-3">
+        <a href='#' class='btn btn-block btn-primary'>
+            <fa-icon [icon]="faCartPlus"></fa-icon>
+            Ajouter au Panier
+        </a>
+    </div>
+</section>

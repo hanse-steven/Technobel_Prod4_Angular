@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {LOCALE_ID,NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -8,6 +8,10 @@ import {provideHttpClient, withInterceptors} from "@angular/common/http";
 import { HeaderComponent } from './layout/header/header.component';
 import {jwtInterceptor} from "./core/interceptor/jwt.interceptor";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {registerLocaleData} from "@angular/common";
+import localeFrBe from '@angular/common/locales/fr-BE'
+
+registerLocaleData(localeFrBe);
 
 @NgModule({
     declarations: [
@@ -21,6 +25,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
         FontAwesomeModule
     ],
     providers: [
+        {provide: LOCALE_ID, useValue: 'fr-BE'},
         provideHttpClient(
             withInterceptors([jwtInterceptor])
         )
