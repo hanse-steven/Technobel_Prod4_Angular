@@ -1,0 +1,8 @@
+<h2>Listing des listes de naissance(s)</h2>
+
+
+@for (cl of childlists; track cl.childlist_id) {
+    <article>
+        <h3>{{cl.firstname}} {{cl.lastname}} {{cl.birthdate}}</h3>
+    </article>
+}
