@@ -26,4 +26,12 @@ export class ChildlistService {
     save(childlist: ChildlistFormModel): Observable<ChildlistFormModel> {
         return this._http.post<ChildlistFormModel>(environment.childList, childlist)
     }
+
+    delete(id: string): Observable<string> {
+        const options = {
+            body: { childlist_id: id },
+            responseType: 'text' as 'text'
+        };
+        return this._http.delete(environment.childList, options)
+    }
 }

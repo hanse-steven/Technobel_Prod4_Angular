@@ -8,6 +8,7 @@ import {FaIconComponent, FontAwesomeModule} from "@fortawesome/angular-fontaweso
 import { ItemComponent } from './pages/item/item.component';
 import { AccountComponent } from './pages/account/account.component';
 import { OwnchildlistComponent } from './pages/ownchildlist/ownchildlist.component';
+import { OwnchildlistshowComponent } from './pages/ownchildlistshow/ownchildlistshow.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { OwnchildlistComponent } from './pages/ownchildlist/ownchildlist.compone
         IndexComponent,
         ItemComponent,
         AccountComponent,
-        OwnchildlistComponent
+        OwnchildlistComponent,
+        OwnchildlistshowComponent
     ],
     imports: [
         CommonModule,

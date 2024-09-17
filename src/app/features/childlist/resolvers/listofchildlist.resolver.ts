@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 import {inject} from "@angular/core";
 import {ChildlistService} from "../services/childlist.service";
 
-export const childlistResolver: ResolveFn<Observable<ChildlistDtoModel>> = (route, state) => {
+export const listofchildlistResolver: ResolveFn<Observable<ChildlistDtoModel[]>> = (route, state) => {
     const childListService: ChildlistService = inject(ChildlistService)
-    return childListService.findById(route.params['id'])
+    return childListService.findAll()
 };
