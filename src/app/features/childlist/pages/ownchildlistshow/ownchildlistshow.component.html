@@ -1,1 +1,39 @@
-<p>ownchildlistshow works!</p>
+<section class="row mx-auto mt-3">
+    <h2 class="col-md-12">Article(s) en attente sur cette liste</h2>
+    @for (it of childlist.items; track it.childlistitem_id) {
+        @if (it.boughtBy === null) {
+            <div class="col-md-12">
+                <div class="m-3 p-2 border border-3 border-black">
+                    <div class="d-grid">
+                        <h4>{{ it.name }}</h4>
+                        <p>{{ it.price | currency }}</p>
+
+                        <a class="btn btn-primary" [routerLink]="'/childlist/item/' + it.childlistitem_id">
+                            <fa-icon [icon]="faAlignLeft"></fa-icon>
+                            Description
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+    <h2 class="col-md-12 mt-4">Article(s) réservé(s)</h2>
+    @for (it of childlist.items; track it.childlistitem_id) {
+        @if (it.boughtBy !== null) {
+            <div class="col-md-12">
+                <div class="m-3 p-2 border border-3 border-black">
+                    <div class="d-grid">
+                        <h4>{{ it.name }}</h4>
+                        <p>{{ it.price | currency }}</p>
+
+                        <a class="btn btn-primary" [routerLink]="'/childlist/item/' + it.childlistitem_id">
+                            <fa-icon [icon]="faAlignLeft"></fa-icon>
+                            Description
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</section>

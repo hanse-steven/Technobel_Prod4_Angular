@@ -1,4 +1,4 @@
-import {LOCALE_ID,NgModule} from '@angular/core';
+import {DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -26,6 +26,7 @@ registerLocaleData(localeFrBe);
     ],
     providers: [
         {provide: LOCALE_ID, useValue: 'fr-BE'},
+        {provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR'},
         provideHttpClient(
             withInterceptors([jwtInterceptor])
         )

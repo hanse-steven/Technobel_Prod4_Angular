@@ -16,7 +16,7 @@
     <div class="mb-3 row">
         <label for="Photo" class="col-md-1 col-form-label">Image</label>
         <div class="col-md-11">
-            <img id="Photo" [src]="'data:image/png;base64,' + childlistitem.image" class="form-control input-md" style="max-height: 250px; width: auto; aspect-ratio: 1">
+            <img id="Photo" [src]="childlistitem.image" class="form-control input-md" style="max-height: 250px; width: auto; aspect-ratio: 1">
         </div>
     </div>
     <div class="mb-3 row">
@@ -27,9 +27,9 @@
     </div>
 
     <div class="d-grid mt-3">
-        <a href='#' class='btn btn-block btn-primary'>
+        <button class='btn btn-block btn-primary' (click)="addToCart(idItem)">
             <fa-icon [icon]="faCartPlus"></fa-icon>
             Ajouter au Panier
-        </a>
+        </button>
     </div>
 </section>

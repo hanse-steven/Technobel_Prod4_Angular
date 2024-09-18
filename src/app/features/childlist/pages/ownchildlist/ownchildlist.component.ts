@@ -3,7 +3,7 @@ import {faAlignLeft, faEye, faSave, faXmark} from "@fortawesome/free-solid-svg-i
 import {ChildlistDtoModel} from "../../models/childlist.dto.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../../auth/services/auth.service";
-import {NewlistForm} from "../../forms/newlist.forms";
+import {NewlistForm} from "../../forms/newlist.form";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {ChildlistService} from "../../services/childlist.service";
 

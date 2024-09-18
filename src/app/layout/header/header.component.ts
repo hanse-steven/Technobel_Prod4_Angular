@@ -3,6 +3,7 @@ import {Link} from '../../core/models/link';
 import {AuthService} from "../../features/auth/services/auth.service";
 import {UserTokenDtoModel} from "../../features/auth/models/user.token.dto.model";
 import {faCartShopping, faHome, faList, faRightFromBracket, faUser, faUserPlus} from "@fortawesome/free-solid-svg-icons";
+import {ChildlistitemService} from "../../features/childlist/services/childlistitem.service";
 
 @Component({
     selector: 'app-header',
@@ -10,6 +11,9 @@ import {faCartShopping, faHome, faList, faRightFromBracket, faUser, faUserPlus} 
     styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
+    currentUser: UserTokenDtoModel | undefined;
+    cartLenght: number = 0
+
     links: Link = {
         left: [],
         right: []
@@ -41,14 +45,16 @@ export class HeaderComponent {
         left: [
             {
                 title: 'Listes de naissances',
-                url: '/childlist/',
+                url: '/childlist',
                 icon: faList
             },
         ],
         right: [
             {
                 title: 'Panier',
+                badge: this.cartLenght,
                 icon: faCartShopping,
+                url: '/childlist/cart'
             },
             {
                 title: 'Compte',
@@ -63,10 +69,9 @@ export class HeaderComponent {
         ]
     }
 
-    currentUser: UserTokenDtoModel | undefined;
-
     constructor(
         private readonly _authService: AuthService,
+        private readonly _cliService: ChildlistitemService
     ) {
         _authService.currentUser$.subscribe({
             next: data => {
@@ -74,5 +79,7 @@ export class HeaderComponent {
                 this.links = this.currentUser ? this.authenticatedNav : this.anonymousNav
             }
         })
+
+        this.authenticatedNav.right[0].badge = this._cliService.getCart().size
     }
 }

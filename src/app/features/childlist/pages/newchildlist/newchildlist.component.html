@@ -1,0 +1,79 @@
+<section class="row mx-auto mt-3">
+    <article>
+        <h3 class="mt-3">Ajouter un objet à une liste</h3>
+
+        <div class="m-3 p-2 border border-3 border-black">
+            <form [formGroup]="newitemForm" (ngSubmit)="submit()">
+                <div class="form-floating m-3">
+                    <select
+                        class="form-select is-invalid"
+                        id="list"
+                        formControlName="list"
+                        [ngClass]="{'is-invalid': newitemForm.get('list')?.invalid && (newitemForm.get('list')?.touched)}"
+                    >
+                        <option selected disabled value="">Sélectionnez une liste de naissance</option>
+                        @for (l of childlists; track l.childlist_id) {
+                            <option value="{{ l.childlist_id }}">{{ l.firstname }} {{ l.lastname }}</option>
+                        }
+                    </select>
+                    <label for="list">Liste de naissances</label>
+                    <app-form-error [control]="newitemForm.get('list')"></app-form-error>
+                </div>
+
+
+                <div class="form-floating m-3">
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="name"
+                        placeholder="un jouet"
+                        formControlName="name"
+                        [ngClass]="{'is-invalid': newitemForm.get('name')?.invalid && (newitemForm.get('name')?.touched)}"
+                    >
+                    <label for="name">Nom de l'objet</label>
+                    <app-form-error [control]="newitemForm.get('name')"></app-form-error>
+                </div>
+
+                <div class="form-floating m-3">
+                    <input
+                        type="number"
+                        class="form-control is-invalid"
+                        id="price"
+                        placeholder="0.0"
+                        min="0.01"
+                        formControlName="price"
+                        [ngClass]="{'is-invalid': newitemForm.get('price')?.invalid && (newitemForm.get('price')?.touched)}"
+                    >
+                    <label for="price">Prix</label>
+                    <app-form-error [control]="newitemForm.get('price')"></app-form-error>
+                </div>
+
+                <div class="form-floating m-3">
+                    <input
+                        type="file"
+                        class="form-control"
+                        id="picture"
+                        formControlName="picture"
+                        (change)="onFileSelected($event)"
+                        [ngClass]="{'is-invalid': newitemForm.get('picture')?.invalid && (newitemForm.get('picture')?.touched)}"
+                    >
+                    <label for="picture">Image</label>
+                    <app-form-error [control]="newitemForm.get('picture')"></app-form-error>
+                </div>
+
+                <div class="form-floating m-3">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="description" style="height: 150px;" formControlName="description"></textarea>
+                    <label for="description">Description</label>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">
+                        <fa-icon [icon]="faSave"></fa-icon>
+                        Créer la liste
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </article>
+</section>

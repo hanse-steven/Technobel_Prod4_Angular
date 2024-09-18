@@ -21,7 +21,7 @@
                                 <td>{{cl.firstname}}</td>
                                 <td>{{cl.birthdate}}</td>
                                 <td>
-                                    <a href="#" class="btn btn-outline-secondary"><fa-icon [icon]="faEye"></fa-icon></a>
+                                    <a [routerLink]="'./' + cl.childlist_id" class="btn btn-outline-secondary"><fa-icon [icon]="faEye"></fa-icon></a>
                                     <a (click)="deleteList(cl.childlist_id)" class="btn btn-outline-secondary"><fa-icon [icon]="faXmark"></fa-icon></a>
                                 </td>
                             </tr>

@@ -1,4 +1,4 @@
-const apiUrl = 'http://192.168.1.107:8000/api/'
+const apiUrl = 'http://localhost:8000/api/'
 export const environment = {
     apiUrl: apiUrl,
     registerUser: apiUrl + 'users/create/',

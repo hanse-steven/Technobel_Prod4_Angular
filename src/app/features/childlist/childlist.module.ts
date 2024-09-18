@@ -9,6 +9,8 @@ import { ItemComponent } from './pages/item/item.component';
 import { AccountComponent } from './pages/account/account.component';
 import { OwnchildlistComponent } from './pages/ownchildlist/ownchildlist.component';
 import { OwnchildlistshowComponent } from './pages/ownchildlistshow/ownchildlistshow.component';
+import { NewchildlistComponent } from './pages/newchildlist/newchildlist.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { OwnchildlistshowComponent } from './pages/ownchildlistshow/ownchildlist
         ItemComponent,
         AccountComponent,
         OwnchildlistComponent,
-        OwnchildlistshowComponent
+        OwnchildlistshowComponent,
+        NewchildlistComponent,
+        CartComponent
     ],
     imports: [
         CommonModule,

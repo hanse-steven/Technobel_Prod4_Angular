@@ -1,0 +1,25 @@
+@if(control && errors && !control.untouched){
+    <ng-container>
+        @if(errors['required']) {
+            <div class="invalid-feedback">Champ obligatoire</div>
+        }
+        @if (errors['minlength']) {
+            <div class="invalid-feedback">Minimum {{ errors['minlength'].requiredLength }} caractères</div>
+        }
+        @if (errors['maxlength']) {
+            <div class="invalid-feedback">Maximum {{ errors['maxlength'].requiredLength }} caractères</div>
+        }
+        @if (errors['min']) {
+            <div class="invalid-feedback">Minimum {{ errors['min'].min }}</div>
+        }
+        @if (errors['max']) {
+            <div class="invalid-feedback">Maximum {{ errors['max'].max }}</div>
+        }
+        @if (errors['email']) {
+            <div class="invalid-feedback">Adresse email invalide</div>
+        }
+        @if (errors['pattern']) {
+            <div class="invalid-feedback">Format invalide</div>
+        }
+    </ng-container>
+}

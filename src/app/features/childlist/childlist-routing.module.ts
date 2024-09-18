@@ -8,13 +8,17 @@ import {AccountComponent} from "./pages/account/account.component";
 import {OwnchildlistComponent} from "./pages/ownchildlist/ownchildlist.component";
 import {OwnchildlistshowComponent} from "./pages/ownchildlistshow/ownchildlistshow.component";
 import {childlistResolver} from "./resolvers/childlist.resolver";
+import {NewchildlistComponent} from "./pages/newchildlist/newchildlist.component";
+import {CartComponent} from "./pages/cart/cart.component";
 
 const routes: Routes = [
     {path: '', component: IndexComponent, resolve: {childlists: listofchildlistResolver}},
     {path: 'item/:id', component: ItemComponent, resolve: {childlists: childlistitemResolver}},
     {path: 'account', component: AccountComponent},
     {path: 'ownchildlist', component: OwnchildlistComponent, resolve: {childlists: listofchildlistResolver}},
-    {path: 'ownchildlist/:id', component: OwnchildlistshowComponent, resolve: {childlists: childlistResolver}},
+    {path: 'ownchildlist/new', component: NewchildlistComponent, resolve: {childlists: listofchildlistResolver}},
+    {path: 'ownchildlist/:id', component: OwnchildlistshowComponent, resolve: {childlist: childlistResolver}},
+    {path: 'cart', component: CartComponent}
 ];
 
 @NgModule({

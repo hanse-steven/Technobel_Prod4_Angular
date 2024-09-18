@@ -19,8 +19,8 @@ export class ChildlistService {
         return this._http.get<ChildlistDtoModel[]>(environment.childList)
     }
 
-    findById(id: string): Observable<ChildlistDtoModel[]> {
-        return this._http.get<ChildlistDtoModel[]>(environment.childList + '?childlist_id=' + id)
+    findById(id: string): Observable<ChildlistDtoModel> {
+        return this._http.get<ChildlistDtoModel>(environment.childList + '?childlist_id=' + id)
     }
 
     save(childlist: ChildlistFormModel): Observable<ChildlistFormModel> {

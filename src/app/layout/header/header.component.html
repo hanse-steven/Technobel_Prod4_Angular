@@ -24,12 +24,15 @@
                     <ul class="navbar-nav mb-2 mb-lg-0">
                         @for (link of links.right; track link) {
                             <li class="nav-item">
-                                <a class="nav-link" [routerLink]="link.url" (click)="link.action ? link.action() : ''" role="button">
+                                <a class="nav-link position-relative" [routerLink]="link.url" (click)="link.action ? link.action() : ''" role="button">
                                     @if (link.icon) {
                                         <fa-icon [icon]="link.icon!"></fa-icon>
                                     }
                                     @if (link.title) {
                                         {{ link.title }}
+                                    }
+                                    @if (link.badge) {
+                                        <span class="badge text-bg-primary">{{ link.badge }}</span>
                                     }
                                 </a>
                             </li>

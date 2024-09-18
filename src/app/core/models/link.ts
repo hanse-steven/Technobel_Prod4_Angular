@@ -10,4 +10,5 @@ export interface LinkItem {
     icon?: IconDefinition;
     url?: string;
     action?: () => void;
+    badge?: number;
 }
