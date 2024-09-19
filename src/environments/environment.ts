@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:8000/api/'
+const apiUrl = 'https://prod4-back.isservers.be/api/'
 export const environment = {
     apiUrl: apiUrl,
     registerUser: apiUrl + 'users/create/',

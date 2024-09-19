@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ChildlistitemService} from "../../services/childlistitem.service";
 
 @Component({
@@ -6,13 +6,16 @@ import {ChildlistitemService} from "../../services/childlistitem.service";
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
-export class CartComponent {
-    cartItems: Set<string>
+export class CartComponent implements OnInit{
+    cartItems!: Set<string>
 
     constructor(
         private readonly _cli: ChildlistitemService
-    ) {
-        this.cartItems = this._cli.getCart()
-        console.log(this._cli.getCart())
+    ) {}
+
+    ngOnInit(): void {
+        this._cli.cartItem$.subscribe({
+            next: value => this.cartItems = value
+        })
     }
 }

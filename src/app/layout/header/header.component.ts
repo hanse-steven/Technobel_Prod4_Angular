@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Link} from '../../core/models/link';
 import {AuthService} from "../../features/auth/services/auth.service";
 import {UserTokenDtoModel} from "../../features/auth/models/user.token.dto.model";
@@ -10,7 +10,7 @@ import {ChildlistitemService} from "../../features/childlist/services/childlisti
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss',
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
     currentUser: UserTokenDtoModel | undefined;
     cartLenght: number = 0
 
@@ -64,22 +64,28 @@ export class HeaderComponent {
             {
                 title: 'Logout',
                 icon: faRightFromBracket,
-                action: () => this._authService.logout()
+                action: () => this._auth.logout()
             },
         ]
     }
 
     constructor(
-        private readonly _authService: AuthService,
-        private readonly _cliService: ChildlistitemService
-    ) {
-        _authService.currentUser$.subscribe({
+        private readonly _auth: AuthService,
+        private readonly _cli: ChildlistitemService
+    ) {}
+
+    ngOnInit(): void {
+        this._auth.currentUser$.subscribe({
             next: data => {
                 this.currentUser = data
                 this.links = this.currentUser ? this.authenticatedNav : this.anonymousNav
             }
         })
 
-        this.authenticatedNav.right[0].badge = this._cliService.getCart().size
+        this._cli.cartItem$.subscribe({
+            next: value => this.authenticatedNav.right[0].badge = value.size
+        })
     }
+
+
 }

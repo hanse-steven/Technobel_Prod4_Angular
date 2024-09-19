@@ -10,7 +10,7 @@ import {ChildlistitemFormModel} from "../models/childlistitem.form.model";
 })
 export class ChildlistitemService {
 
-    private cartItem$: BehaviorSubject<Set<string>>
+    cartItem$: BehaviorSubject<Set<string>>
 
     constructor(
         private readonly _http: HttpClient
@@ -49,9 +49,5 @@ export class ChildlistitemService {
         currentCart.add(id)
         this.cartItem$.next(currentCart)
         localStorage.setItem('cart', JSON.stringify(Array.from(currentCart)))
-    }
-
-    getCart(): Set<string> {
-        return this.cartItem$.value
     }
 }
