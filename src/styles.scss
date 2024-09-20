@@ -48,3 +48,11 @@ section {
 app-form-error > .invalid-feedback {
     display: block;
 }
+
+header {
+    margin-right: auto;
+
+    & > div {
+        padding-right: 0;
+    }
+}

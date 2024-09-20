@@ -25,6 +25,14 @@ export class ChildlistitemService {
         return this._http.get<ChildlistitemDtoModel>(environment.childListItem + '?childlistitem_id=' + id)
     }
 
+    findAllByidFromCart(): Observable<ChildlistitemDtoModel[]> {
+        return this.findAllByid(Array.from(this.cartItem$.value.values()))
+    }
+
+    findAllByid(ids: string[]): Observable<ChildlistitemDtoModel[]> {
+        return this._http.post<ChildlistitemDtoModel[]>(environment.childListItemBulk, ids)
+    }
+
     buy(id: string): Observable<string>{
         const options = {
             body: { childlistitem_id: id },
@@ -47,6 +55,13 @@ export class ChildlistitemService {
     addToCart(id: string): void {
         const currentCart = this.cartItem$.value
         currentCart.add(id)
+        this.cartItem$.next(currentCart)
+        localStorage.setItem('cart', JSON.stringify(Array.from(currentCart)))
+    }
+
+    removeToCart(id: string): void {
+        const currentCart = this.cartItem$.value
+        currentCart.delete(id)
         this.cartItem$.next(currentCart)
         localStorage.setItem('cart', JSON.stringify(Array.from(currentCart)))
     }

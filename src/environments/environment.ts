@@ -5,4 +5,5 @@ export const environment = {
     loginUser: apiUrl + 'token/',
     childList: apiUrl + 'child-list/',
     childListItem: apiUrl + 'child-list-item/',
+    childListItemBulk: apiUrl + 'child-list-item/bulk/',
 }
