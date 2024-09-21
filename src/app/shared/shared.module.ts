@@ -1,29 +1,26 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { FormErrorComponent } from './components/form-error/form-error.component';
-import { ToastGlobalComponent } from './components/toast-global/toast-global.component';
-import {NgbToast, NgbTooltipModule} from "@ng-bootstrap/ng-bootstrap";
-import { ToastContainerComponent } from './components/toast-container/toast-container.component'
-
+import {FormErrorComponent} from './components/form-error/form-error.component';
+import {ToastComponent} from './components/toast/toast.component';
+import {NgbToast} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
     declarations: [
-    FormErrorComponent,
-    ToastGlobalComponent,
-    ToastContainerComponent
-  ],
+        FormErrorComponent,
+        ToastComponent,
+    ],
     imports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        NgbTooltipModule,
-        NgbToast,
+        NgbToast
     ],
     exports: [
         FormsModule,
         ReactiveFormsModule,
         FormErrorComponent,
+        ToastComponent,
     ]
 })
 export class SharedModule {

@@ -12,8 +12,7 @@ export class ChildlistService {
 
     constructor(
         private readonly _http: HttpClient
-    ) {
-    }
+    ) {}
 
     findAll(): Observable<ChildlistDtoModel[]> {
         return this._http.get<ChildlistDtoModel[]>(environment.childList)

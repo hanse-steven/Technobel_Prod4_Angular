@@ -6,6 +6,7 @@ import {Router} from "@angular/router"
 import {RegisterFormModel} from "../models/register.form.model"
 import {LoginFormModel} from "../models/login.form.model"
 import {environment} from "../../../../environments/environment"
+import {ToastService} from "../../../shared/services/toast.service";
 
 @Injectable({
     providedIn: 'root'
@@ -16,7 +17,8 @@ export class AuthService {
 
     constructor(
         private readonly _http: HttpClient,
-        private readonly _router: Router
+        private readonly _router: Router,
+        private readonly _toast: ToastService
     ) {
         let jsonUser = localStorage.getItem('currentUser')
         this._currentUser$ = new BehaviorSubject<UserTokenDtoModel | undefined>(
@@ -33,6 +35,7 @@ export class AuthService {
             tap(user => {
                 this._currentUser$.next(user);
                 localStorage.setItem("currentUser", JSON.stringify(user))
+                this._toast.showSuccess('Connexion réussie', {header: 'Authentification'})
             }),
         )
     }
@@ -40,6 +43,7 @@ export class AuthService {
     logout() {
         this._currentUser$.next(undefined);
         localStorage.removeItem("currentUser")
+        this._toast.showSuccess('Déconnexion réussie', {header: 'Authentification'})
         this._router.navigate(["/auth/login"])
     }
 

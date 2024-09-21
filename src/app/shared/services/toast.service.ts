@@ -1,28 +1,31 @@
-import {Injectable, TemplateRef} from '@angular/core';
+import { Injectable } from '@angular/core';
 
-export interface Toast {
-    template: TemplateRef<any>,
-    classname?: string
+interface Toast {
+    message: string,
+    header?: string,
+    className?: string,
     delay?: number
 }
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class ToastService {
     toasts: Toast[] = []
 
-    constructor() {}
-
-    show(toast: Toast) {
-        this.toasts.push(toast)
+    show(message: string, options: Partial<Toast> = {}): void {
+        this.toasts.push({message, ...options})
     }
 
-    remove(toast: Toast) {
+    showSuccess(message: string, options: Partial<Toast> = {}): void {
+        this.show(message, {className: 'text-bg-success', ...options})
+    }
+
+    showError(message: string, options: Partial<Toast> = {}): void {
+        this.show(message, {className: 'text-bg-danger', ...options})
+    }
+
+    remove(toast: Toast): void {
         this.toasts = this.toasts.filter(t => t !== toast)
-    }
-
-    clear() {
-        this.toasts.splice(0, this.toasts.length)
     }
 }

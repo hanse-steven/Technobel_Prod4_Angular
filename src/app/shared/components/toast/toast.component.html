@@ -1,0 +1,12 @@
+<div class="toast-container top-1 end-0 p-3">
+@for (toast of toastsService.toasts; track toast) {
+    <ngb-toast
+        [class]="toast.className"
+        [header]="toast.header || ''"
+        [autohide]="true"
+        [delay]="toast.delay || 5000"
+        (hidden)="toastsService.remove(toast)">
+        {{ toast.message }}
+    </ngb-toast>
+}
+</div>
