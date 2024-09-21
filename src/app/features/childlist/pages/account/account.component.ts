@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {AuthService} from "../../../auth/services/auth.service";
 import {faCirclePlus, faList, faRightFromBracket} from "@fortawesome/free-solid-svg-icons";
 
@@ -12,14 +12,9 @@ export class AccountComponent {
     protected readonly faCirclePlus = faCirclePlus;
     protected readonly faList = faList;
 
-    constructor(
-        private readonly _authService: AuthService,
-    ) {
-    }
+    constructor(private readonly _authService: AuthService) {}
 
     logout() {
         this._authService.logout()
     }
-
-
 }

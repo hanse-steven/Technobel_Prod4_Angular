@@ -9,7 +9,8 @@ import { HeaderComponent } from './layout/header/header.component';
 import {jwtInterceptor} from "./core/interceptor/jwt.interceptor";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {registerLocaleData} from "@angular/common";
-import localeFrBe from '@angular/common/locales/fr-BE'
+import localeFrBe from '@angular/common/locales/fr-BE';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 registerLocaleData(localeFrBe);
 
@@ -22,7 +23,8 @@ registerLocaleData(localeFrBe);
         BrowserModule,
         AppRoutingModule,
         SharedModule,
-        FontAwesomeModule
+        FontAwesomeModule,
+        NgbModule
     ],
     providers: [
         {provide: LOCALE_ID, useValue: 'fr-BE'},

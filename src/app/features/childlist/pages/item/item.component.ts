@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ChildlistitemDtoModel} from "../../models/childlistitem.dto.model";
 import {faCartPlus} from "@fortawesome/free-solid-svg-icons";
@@ -9,19 +9,18 @@ import {ChildlistitemService} from "../../services/childlistitem.service";
   templateUrl: './item.component.html',
   styleUrl: './item.component.scss'
 })
-export class ItemComponent {
-    idItem : string
+export class ItemComponent implements OnInit{
     childlistitem! : ChildlistitemDtoModel
 
     constructor(
         private readonly _ar: ActivatedRoute,
         private readonly _cli: ChildlistitemService
-    )
-    {
+    ) {}
+
+    ngOnInit() {
         this._ar.data.subscribe((data: any) => {
-            this.childlistitem = data.childlists
+            this.childlistitem = data.item
         })
-        this.idItem = this._ar.snapshot.params['id']
     }
 
     addToCart(id:string) {

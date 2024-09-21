@@ -1,7 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ChildlistDtoModel} from "../../models/childlist.dto.model";
 import {ActivatedRoute} from "@angular/router";
-import {environment} from "../../../../../environments/environment";
 import {faAlignLeft} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
@@ -9,18 +8,18 @@ import {faAlignLeft} from "@fortawesome/free-solid-svg-icons";
     templateUrl: './index.component.html',
     styleUrl: './index.component.scss'
 })
-export class IndexComponent {
+export class IndexComponent implements OnInit{
     childlists!: ChildlistDtoModel[]
 
     constructor(
         private readonly _ar: ActivatedRoute
-    ) {
+    ) {}
+
+    ngOnInit() {
         this._ar.data.subscribe((data: any) => {
             this.childlists = data.childlists
         })
     }
 
-
-    protected readonly environment = environment;
     protected readonly faAlignLeft = faAlignLeft;
 }

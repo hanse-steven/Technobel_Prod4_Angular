@@ -14,7 +14,7 @@ import {cartResolver} from "./resolvers/cart.resolver"
 
 const routes: Routes = [
     {path: '', component: IndexComponent, resolve: {childlists: listofchildlistResolver}},
-    {path: 'item/:id', component: ItemComponent, resolve: {childlists: childlistitemResolver}},
+    {path: 'item/:id', component: ItemComponent, resolve: {item: childlistitemResolver}},
     {path: 'account', component: AccountComponent},
     {path: 'ownchildlist', component: OwnchildlistComponent, resolve: {childlists: listofchildlistResolver}},
     {path: 'ownchildlist/new', component: NewchildlistComponent, resolve: {childlists: listofchildlistResolver}},

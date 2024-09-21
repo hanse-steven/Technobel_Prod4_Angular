@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ChildlistitemService} from "../../services/childlistitem.service";
 import {faCartShopping, faTrash} from "@fortawesome/free-solid-svg-icons"
-import {ActivatedRoute, Router} from "@angular/router"
+import {ActivatedRoute} from "@angular/router"
 import {ChildlistitemDtoModel} from "../../models/childlistitem.dto.model"
+import {ToastService} from "../../../../shared/services/toast.service";
 
 @Component({
   selector: 'app-cart',
@@ -15,7 +16,7 @@ export class CartComponent implements OnInit{
     constructor(
         private readonly _cli: ChildlistitemService,
         private readonly _ar: ActivatedRoute,
-        private readonly _route: Router
+        private readonly _toast: ToastService,
     ) {}
 
     ngOnInit(): void {
@@ -32,7 +33,7 @@ export class CartComponent implements OnInit{
     reloadItems() {
         this._cli.findAllByidFromCart().subscribe({
             next: data => this.cartItems = data,
-            error: err => console.error(err)
+            error: _ => this._toast.showError('Impossible de rafrachir le panier')
         })
     }
 

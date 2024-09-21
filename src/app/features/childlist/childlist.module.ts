@@ -11,6 +11,7 @@ import { OwnchildlistComponent } from './pages/ownchildlist/ownchildlist.compone
 import { OwnchildlistshowComponent } from './pages/ownchildlistshow/ownchildlistshow.component';
 import { NewchildlistComponent } from './pages/newchildlist/newchildlist.component';
 import { CartComponent } from './pages/cart/cart.component';
+import {NgbToast} from "@ng-bootstrap/ng-bootstrap"
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { CartComponent } from './pages/cart/cart.component';
         ChildlistRoutingModule,
         SharedModule,
         FontAwesomeModule,
+        NgbToast,
     ]
 })
 export class ChildlistModule {
