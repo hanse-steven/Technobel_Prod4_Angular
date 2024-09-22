@@ -1,16 +1,59 @@
-<h2>Register Form</h2>
-<form [formGroup]="registerForm" (ngSubmit)="submit()">
-    <div>
-        <label for="username">Username : </label>
-        <input id="username" type="text" formControlName="username" required>
-    </div>
-    <div>
-        <label for="password">Password</label>
-        <input id="password" type="password" formControlName="password" required>
-    </div>
-    <div>
-        <label for="cpassword">Confirm Password</label>
-        <input id="cpassword" type="password" formControlName="confirm_password" required>
-    </div>
-    <button type="submit">register</button>
-</form>
+<section class="row mx-auto m-3">
+    <article class="mt-3 border border-3 border-black">
+        <h3 class="mt-3">Inscription</h3>
+
+        <div class="m-3 p-2 border border-3 border-black">
+
+            <form [formGroup]="registerForm" (ngSubmit)="submit()">
+
+                <div class="form-floating m-3">
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="username"
+                        placeholder="un username"
+                        formControlName="username"
+                        [ngClass]="{'is-invalid': registerForm.get('username')?.invalid && (registerForm.get('username')?.touched)}"
+                    >
+                    <label for="username">Nom d'utilisateur</label>
+                    <app-form-error [control]="registerForm.get('username')"></app-form-error>
+                </div>
+
+                <div class="form-floating m-3">
+                    <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        placeholder="un password"
+                        formControlName="password"
+                        [ngClass]="{'is-invalid': registerForm.get('password')?.invalid && (registerForm.get('password')?.touched)}"
+                    >
+                    <label for="password">Mot de passe</label>
+                    <app-form-error [control]="registerForm.get('password')"></app-form-error>
+                </div>
+
+                <div class="form-floating m-3">
+                    <input
+                        type="password"
+                        class="form-control"
+                        id="confirm_password"
+                        placeholder="un password"
+                        formControlName="confirm_password"
+                        [ngClass]="{'is-invalid': registerForm.get('confirm_password')?.invalid && (registerForm.get('confirm_password')?.touched)}"
+                    >
+                    <label for="confirm_password">Confirmer le mot de passe</label>
+                    <app-form-error [control]="registerForm.get('confirm_password')"></app-form-error>
+                </div>
+
+                <div class="d-grid m-3">
+                    <button type="submit" class="btn btn-primary">
+                        <fa-icon [icon]="faUserPlus"></fa-icon>
+                        Inscription
+                    </button>
+                </div>
+            </form>
+
+        </div>
+
+    </article>
+</section>

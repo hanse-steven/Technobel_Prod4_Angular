@@ -1,5 +1,5 @@
 <section class="row mx-auto mt-3">
-    <article>
+    <article class="my-3 border border-3 border-black">
         <h3 class="mt-3">Ajouter un objet à une liste</h3>
 
         <div class="m-3 p-2 border border-3 border-black">
@@ -19,7 +19,6 @@
                     <label for="list">Liste de naissances</label>
                     <app-form-error [control]="newitemForm.get('list')"></app-form-error>
                 </div>
-
 
                 <div class="form-floating m-3">
                     <input
@@ -66,7 +65,7 @@
                     <label for="description">Description</label>
                 </div>
 
-                <div class="d-grid">
+                <div class="d-grid m-3">
                     <button type="submit" class="btn btn-primary">
                         <fa-icon [icon]="faSave"></fa-icon>
                         Créer la liste

@@ -4,8 +4,8 @@ import {CommonModule} from '@angular/common';
 import {AuthRoutingModule} from './auth-routing.module';
 import {LoginComponent} from './pages/login/login.component';
 import {RegisterComponent} from './pages/register/register.component';
-import {ReactiveFormsModule} from "@angular/forms";
 import {SharedModule} from "../../shared/shared.module";
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 
 
 @NgModule({
@@ -16,7 +16,8 @@ import {SharedModule} from "../../shared/shared.module";
     imports: [
         CommonModule,
         AuthRoutingModule,
-        SharedModule
+        SharedModule,
+        FaIconComponent
     ]
 })
 export class AuthModule {

@@ -27,7 +27,11 @@ export class AuthService {
     }
 
     register(form: RegisterFormModel): Observable<UserTokenDtoModel> {
-        return this._http.post<UserTokenDtoModel>(environment.registerUser, form);
+        return this._http.post<UserTokenDtoModel>(environment.registerUser, form).pipe(
+            tap(_ => {
+                this._toast.showSuccess('Création du compte réussie', {header: 'Authentification'})
+            })
+        )
     }
 
     login(form: LoginFormModel): Observable<UserTokenDtoModel> {

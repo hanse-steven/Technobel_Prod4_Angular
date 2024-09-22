@@ -10,6 +10,7 @@ import {ChildlistitemService} from "../../services/childlistitem.service";
   styleUrl: './item.component.scss'
 })
 export class ItemComponent implements OnInit{
+    hideCardButton = false
     childlistitem! : ChildlistitemDtoModel
 
     constructor(
@@ -21,6 +22,8 @@ export class ItemComponent implements OnInit{
         this._ar.data.subscribe((data: any) => {
             this.childlistitem = data.item
         })
+
+        this.hideCardButton = this._ar.snapshot.queryParams['hideCart'] || false
     }
 
     addToCart(id:string) {

@@ -1,14 +1,14 @@
-<section class="row mx-auto mt-3">
+<section class="row mx-auto m-4">
     <h2 class="col-md-12 mb-4">Listing des listes de naissance(s)</h2>
 
     @for (cl of childlists; track cl.childlist_id) {
         @if (cl.items.length > 0) {
-            <article>
-                <h3>{{ cl.firstname }} {{ cl.lastname }} {{ cl.birthdate }}</h3>
+            <article class="my-3 border border-3 border-black">
+                <h3 class="mt-3 text-center">{{ cl.firstname }} {{ cl.lastname }}</h3>
 
                 @for (it of cl.items; track it.childlistitem_id) {
                     @if (it.boughtBy === null) {
-                        <div class="col-md-12">
+                        <div class="m-3 p-2 border border-3 border-black">
                             <h4>{{ it.name }}</h4>
                             <p>{{ it.price | currency }}</p>
                             <div class="d-grid">

@@ -2,10 +2,13 @@
 @for (toast of toastsService.toasts; track toast) {
     <ngb-toast
         [class]="toast.className"
-        [header]="toast.header || ''"
         [autohide]="true"
         [delay]="toast.delay || 5000"
         (hidden)="toastsService.remove(toast)">
+        <ng-template ngbToastHeader>
+            <strong class='me-auto'>{{ toast.header  }}</strong>
+            <small>{{ toast.createdAt | timeAgo }}</small>
+        </ng-template>
         {{ toast.message }}
     </ngb-toast>
 }

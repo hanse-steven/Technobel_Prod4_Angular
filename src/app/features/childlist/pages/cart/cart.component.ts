@@ -30,10 +30,21 @@ export class CartComponent implements OnInit{
         this.reloadItems()
     }
 
+    buy() {
+        this._cli.buyBulkFromCart().subscribe({
+            next: _ => {
+                this._cli.clearCart()
+                this._toast.showSuccess('Achat effectué', {header: 'Panier'})
+                this.reloadItems()
+            },
+            error: _ => this._toast.showError('Impossible d\'effectuer l\'achat', {header: 'Panier'})
+        })
+    }
+
     reloadItems() {
         this._cli.findAllByidFromCart().subscribe({
             next: data => this.cartItems = data,
-            error: _ => this._toast.showError('Impossible de rafrachir le panier')
+            error: _ => this._toast.showError('Impossible de rafrachir le panier', {header: 'Panier'})
         })
     }
 

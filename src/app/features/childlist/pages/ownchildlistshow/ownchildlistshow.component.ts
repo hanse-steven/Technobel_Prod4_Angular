@@ -21,6 +21,14 @@ export class OwnchildlistshowComponent implements OnInit{
         })
     }
 
+    get countBought() {
+        return this.childlist.items.filter(item => item.boughtBy).length
+    }
+
+    get countNotBought() {
+        return this.childlist.items.filter(item => !item.boughtBy).length
+    }
+
     protected readonly faAlignLeft = faAlignLeft;
 }
 

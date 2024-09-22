@@ -3,18 +3,21 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {FormErrorComponent} from './components/form-error/form-error.component';
 import {ToastComponent} from './components/toast/toast.component';
-import {NgbToast} from "@ng-bootstrap/ng-bootstrap";
+import {NgbToast, NgbToastHeader} from "@ng-bootstrap/ng-bootstrap";
+import { TimeAgoPipe } from './pipes/timeago.pipe';
 
 @NgModule({
     declarations: [
         FormErrorComponent,
         ToastComponent,
+        TimeAgoPipe,
     ],
     imports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        NgbToast
+        NgbToast,
+        NgbToastHeader
     ],
     exports: [
         FormsModule,

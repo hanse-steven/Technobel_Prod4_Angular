@@ -14,6 +14,10 @@ export class AccountComponent {
 
     constructor(private readonly _authService: AuthService) {}
 
+    get currentUser() {
+        return JSON.parse(atob(this._authService.currentUser!.access!.split('.')[1])).user_name
+    }
+
     logout() {
         this._authService.logout()
     }

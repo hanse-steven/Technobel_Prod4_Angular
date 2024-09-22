@@ -4,7 +4,8 @@ interface Toast {
     message: string,
     header?: string,
     className?: string,
-    delay?: number
+    delay?: number,
+    createdAt: Date
 }
 
 @Injectable({
@@ -14,7 +15,7 @@ export class ToastService {
     toasts: Toast[] = []
 
     show(message: string, options: Partial<Toast> = {}): void {
-        this.toasts.push({message, ...options})
+        this.toasts.unshift({message, createdAt: new Date ,...options})
     }
 
     showSuccess(message: string, options: Partial<Toast> = {}): void {

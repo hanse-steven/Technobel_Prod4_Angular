@@ -43,7 +43,7 @@ export class NewchildlistComponent implements OnInit{
 
         this.newitemForm.value.picture = this.imageBase64
 
-        let childlist = this.childlists.find( cl => cl.childlist_id === this.newitemForm.value.childlist_id)!
+        let childlist = this.childlists.find( cl => cl.childlist_id === this.newitemForm.value.list)!
         this._cli.save(this.newitemForm.value).subscribe({
             next: _ => {
                 this._toast.showSuccess('Objet ajouté à la liste', {header: `Liste de ${childlist.firstname} ${childlist.lastname}`})

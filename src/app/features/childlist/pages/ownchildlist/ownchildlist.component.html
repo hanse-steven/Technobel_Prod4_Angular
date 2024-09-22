@@ -1,8 +1,8 @@
 <section class="row mx-auto mt-3">
     <h2 class="col-md-12 mb-4">Listing des listes de naissance(s)</h2>
 
-    <article>
-        <h3>Listes crées</h3>
+    <article class="my-3 border border-3 border-black">
+        <h3 class="mt-3">Listes crées</h3>
         <div class="m-3 p-2 border border-3 border-black">
             <table class="table">
                 <thead>
@@ -32,30 +32,51 @@
         </div>
     </article>
 
-    <article>
-        <h3>Créer une liste</h3>
+    <article class="my-3 border border-3 border-black">
+        <h3 class="mt-3">Créer une liste</h3>
 
         <div class="m-3 p-2 border border-3 border-black">
             <form [formGroup]="newlistForm" (ngSubmit)="submit()">
-                <div class="row mb-3">
-                    <label for="firstname" class="col-sm-2 col-form-label">Prenom de l'enfant</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="firstname" formControlName="firstname">
-                    </div>
+                <div class="form-floating m-3">
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="firstname"
+                        placeholder="un prénom"
+                        formControlName="firstname"
+                        [ngClass]="{'is-invalid': newlistForm.get('firstname')?.invalid && (newlistForm.get('firstname')?.touched)}"
+                    >
+                    <label for="firstname">Prénom de l'enfant</label>
+                    <app-form-error [control]="newlistForm.get('firstname')"></app-form-error>
                 </div>
-                <div class="row mb-3">
-                    <label for="lastname" class="col-sm-2 col-form-label">Nom de l'enfant</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="lastname" formControlName="lastname">
-                    </div>
+
+                <div class="form-floating m-3">
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="lastname"
+                        placeholder="un nom"
+                        formControlName="lastname"
+                        [ngClass]="{'is-invalid': newlistForm.get('lastname')?.invalid && (newlistForm.get('lastname')?.touched)}"
+                    >
+                    <label for="firstname">Nom de l'enfant</label>
+                    <app-form-error [control]="newlistForm.get('lastname')"></app-form-error>
                 </div>
-                <div class="row mb-3">
-                    <label for="birthdate" class="col-sm-2 col-form-label">Date prévue de la naissance</label>
-                    <div class="col-sm-10">
-                        <input type="date" class="form-control" id="birthdate" formControlName="birthdate">
-                    </div>
+
+                <div class="form-floating m-3">
+                    <input
+                        type="date"
+                        class="form-control"
+                        id="birthdate"
+                        placeholder="une date"
+                        formControlName="birthdate"
+                        [ngClass]="{'is-invalid': newlistForm.get('birthdate')?.invalid && (newlistForm.get('birthdate')?.touched)}"
+                    >
+                    <label for="birthdate">Date de naissance prévue</label>
+                    <app-form-error [control]="newlistForm.get('birthdate')"></app-form-error>
                 </div>
-                <div class="d-grid">
+
+                <div class="d-grid m-3">
                     <button type="submit" class="btn btn-primary">
                         <fa-icon [icon]="faSave"></fa-icon>
                         Créer la liste
@@ -65,7 +86,5 @@
         </div>
 
     </article>
-
-
 
 </section>

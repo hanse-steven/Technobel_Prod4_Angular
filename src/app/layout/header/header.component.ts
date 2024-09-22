@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Link} from '../../core/models/link';
 import {AuthService} from "../../features/auth/services/auth.service";
 import {UserTokenDtoModel} from "../../features/auth/models/user.token.dto.model";
-import {faCartShopping, faHome, faList, faRightFromBracket, faUser, faUserPlus} from "@fortawesome/free-solid-svg-icons";
+import {faCartShopping, faHome, faRightFromBracket, faUser, faUserPlus} from "@fortawesome/free-solid-svg-icons";
 import {ChildlistitemService} from "../../features/childlist/services/childlistitem.service";
 
 @Component({
@@ -44,9 +44,9 @@ export class HeaderComponent implements OnInit {
     private authenticatedNav: Link = {
         left: [
             {
-                title: 'Listes de naissances',
+                title: 'Accueil',
                 url: '/childlist',
-                icon: faList
+                icon: faHome
             },
         ],
         right: [
@@ -62,7 +62,7 @@ export class HeaderComponent implements OnInit {
                 icon: faUser,
             },
             {
-                title: 'Logout',
+                title: 'Déconnexion',
                 icon: faRightFromBracket,
                 action: () => this._auth.logout()
             },
@@ -82,10 +82,10 @@ export class HeaderComponent implements OnInit {
             }
         })
 
+        // document.querySelector('.navbar-toggler').click()
+
         this._cli.cartItem$.subscribe({
             next: value => this.authenticatedNav.right[0].badge = value.size
         })
     }
-
-
 }

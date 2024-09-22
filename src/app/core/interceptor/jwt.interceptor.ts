@@ -2,6 +2,7 @@ import {HttpInterceptorFn} from '@angular/common/http'
 import {UserTokenDtoModel} from "../../features/auth/models/user.token.dto.model"
 import {AuthService} from "../../features/auth/services/auth.service"
 import {inject} from "@angular/core"
+import {catchError, throwError} from "rxjs";
 
 export const jwtInterceptor: HttpInterceptorFn = (req, next) => {
     const authService: AuthService = inject(AuthService)
@@ -14,7 +15,12 @@ export const jwtInterceptor: HttpInterceptorFn = (req, next) => {
                 let requestClone = req.clone({
                     headers: req.headers.append('Authorization', 'Bearer ' + token)
                 })
-                return next(requestClone)
+                return next(requestClone).pipe(catchError(err => {
+                    if (err.status === 401) {
+                        authService.logout()
+                    }
+                    return throwError(err)
+                }))
             }
         }
     }

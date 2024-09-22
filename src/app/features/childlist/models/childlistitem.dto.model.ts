@@ -1,3 +1,5 @@
+import {ChildlistDtoModel} from "./childlist.dto.model";
+
 export interface ChildlistitemDtoModel {
     childlistitem_id: string
     name: string
@@ -5,4 +7,5 @@ export interface ChildlistitemDtoModel {
     image: string
     boughtBy: number | null
     description: string
+    childlist: ChildlistDtoModel | null
 }
