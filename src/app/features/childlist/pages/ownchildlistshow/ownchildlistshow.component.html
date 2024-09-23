@@ -37,7 +37,7 @@
                     <h4>{{ it.name }}</h4>
                     <p>{{ it.price | currency }}</p>
 
-                    <a class="btn btn-primary" [routerLink]="'/childlist/item/' + it.childlistitem_id">
+                    <a class="btn btn-primary" [routerLink]="'/childlist/item/' + it.childlistitem_id" [queryParams]="{hideCart: true}">
                         <fa-icon [icon]="faAlignLeft"></fa-icon>
                         Description
                     </a>
